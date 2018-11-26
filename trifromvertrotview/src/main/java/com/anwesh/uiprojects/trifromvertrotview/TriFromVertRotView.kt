@@ -17,6 +17,7 @@ val strokeFactor : Int = 90
 val scDiv : Double = 0.51
 val scGap : Float = 0.05f
 val color : Int = Color.parseColor("#311B92")
+val delay : Long = 25
 
 fun Int.getInverse() : Float = 1f / this
 
@@ -115,7 +116,7 @@ class TriFromVertRotView(ctx : Context) : View(ctx) {
             if (animated) {
                 cb()
                 try {
-                    Thread.sleep(50)
+                    Thread.sleep(delay)
                     view.invalidate()
                 } catch (ex : Exception) {
 
