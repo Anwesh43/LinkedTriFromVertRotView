@@ -226,4 +226,12 @@ class TriFromVertRotView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : TriFromVertRotView {
+            val view : TriFromVertRotView = TriFromVertRotView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
