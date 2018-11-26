@@ -178,6 +178,29 @@ class TriFromVertRotView(ctx : Context) : View(ctx) {
             cb()
             return this
         }
+    }
 
+    data class TriFromVertexRot(var i : Int) {
+
+        private var dir : Int = 1
+        private val root : TFVRNode = TFVRNode(0)
+        private var curr : TFVRNode = root
+
+        fun draw(canvas : Canvas, paint : Paint) {
+            root.draw(canvas, paint)
+        }
+
+        fun update(cb : (Int, Float) -> Unit) {
+            curr.update {i, scl ->
+                curr = curr.getNext(dir) {
+                    dir *= -1
+                }
+                cb(i, scl)
+            }
+        }
+
+        fun startUpdating(cb : () -> Unit) {
+            curr.startUpdating(cb)
+        }
     }
 }
