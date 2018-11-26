@@ -12,7 +12,7 @@ import android.graphics.*
 
 val nodes : Int = 5
 val tris : Int = 3
-val sizeFactor : Int = 3
+val sizeFactor : Float = 2.1f
 val strokeFactor : Int = 90
 val scDiv : Double = 0.51
 val scGap : Float = 0.05f
@@ -32,7 +32,7 @@ fun Float.getPointInCircle(deg : Double) : PointF = PointF(this * Math.cos(deg).
 
 fun Canvas.drawTriangle(r : Float, deg : Double, paint : Paint) {
     val path : Path = Path()
-    for (j in (0..2)) {
+    for (j in (0..3)) {
         val pointInCircle : PointF = r.getPointInCircle(deg/4 + deg * j)
         if (j == 0) {
             path.moveTo(pointInCircle.x, pointInCircle.y)
