@@ -203,4 +203,27 @@ class TriFromVertRotView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : TriFromVertRotView) {
+
+        private val animator : Animator = Animator(view)
+
+        private val tfvr : TriFromVertexRot = TriFromVertexRot(0)
+
+        fun render(canvas : Canvas, paint : Paint) {
+            canvas.drawColor(Color.parseColor("#BDBDBD"))
+            tfvr.draw(canvas, paint)
+            animator.animate {
+                tfvr.update {i, scl ->
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            tfvr.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
